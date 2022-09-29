@@ -3,13 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+
+import { AppContextProvider } from './AppContext';
+
+const theme = createTheme({
+  palette: {
+    background: {
+      default: "#888"
+    }
+  }
+})
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
+  <React.StrictMode>  
+    <AppContextProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </AppContextProvider>
   </React.StrictMode>
 );
 
